@@ -8,7 +8,7 @@ namespace GradeConverter.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class GradeConversionController
+    public class GradeConversionController : ControllerBase
     {
         private const string Sport = "Free";
         private const string Boulder = "Boulder";
