@@ -46,6 +46,7 @@ steps:
     publishWebProjects: true
     arguments: '--configuration Release'
     workingDirectory: '$(System.DefaultWorkingDirectory)/Server'
+    zipAfterPublish: true
     
 - task: PublishBuildArtifacts@1
   inputs:
