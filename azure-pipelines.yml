@@ -40,14 +40,12 @@ steps:
 #     platform: '$(buildPlatform)'
 #     configuration: '$(buildConfiguration)'
 
-
 - task: DotNetCoreCLI@2
-  displayName: 'Publishing App...'
   inputs:
-    command: publish
+    command: 'publish'
     publishWebProjects: true
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: false
+    arguments: '--configuration Release'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Server'
     
 - task: PublishBuildArtifacts@1
   inputs:
