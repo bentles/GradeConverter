@@ -1,4 +1,4 @@
-namespace GradeConverter.Models
+namespace GradeConverter.Shared
 {
     using System.Linq;
     using System.Text.RegularExpressions;

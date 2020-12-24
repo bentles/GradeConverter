@@ -1,10 +1,10 @@
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using GradeConverter.Models;
 using System.Linq;
+using GradeConverter.Shared;
 
-namespace GradeConverter.Controllers
+namespace GradeConverter.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -43,7 +43,7 @@ namespace GradeConverter.Controllers
 
             return (from gradeValues in matchingGrades
                     let SAGrade = SAGrades.FirstOrDefault(sa => gradeValues.Value >= sa.min && gradeValues.Value <= sa.max)
-                    select new GradeConverter.Models.GradeMatch()
+                    select new GradeMatch()
                     {
                         FromGrade = gradeValues.GradeName,
                         FromGradeSystemName = gradeValues.SystemName,
