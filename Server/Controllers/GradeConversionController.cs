@@ -16,7 +16,7 @@ namespace GradeConverter.Server.Controllers
 
         static GradeConversionController()
         {
-            var text = File.ReadAllText("Assets/grades.json");
+            var text = System.IO.File.ReadAllText("Assets/grades.json");
             gradeSystems = JsonSerializer.Deserialize<GradeSystem[]>(text);
         }
 
