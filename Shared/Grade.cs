@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace GradeConverter.Models
+namespace GradeConverter.Shared
 {
     public class Grade
     {
