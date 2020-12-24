@@ -1,0 +1,42 @@
+@using GradeConverter.Shared
+@inject HttpClient Http
+
+@if(grades != null) {
+    @foreach (var grade in grades)
+    {
+        <div>
+            <div>
+                <span>@grade.FromGrade</span>:
+                <span>@grade.FromGradeSystemName</span>
+            </div>
+            ===>
+            <div>
+                <span>@grade.ToGrade</span>:
+                <span>@grade.ToGradeSystem</span>
+            </div>
+        </div>
+
+        <br>
+        <br>
+    }
+}
+
+
+@code {
+
+    [Parameter]
+    public string Grade { get; set; }
+
+    [Parameter]
+    public EventCallback<string> GradeChanged { get; set; }
+
+    private GradeMatch[] grades;
+    
+    private void GetGrades() {       
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        grades = await Http.GetFromJsonAsync<GradeMatch[]>($"GradeConversion/GetSouthAfricanRouteGrade?grade={Grade}");
+    }   
+}

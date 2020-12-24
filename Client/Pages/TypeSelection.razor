@@ -1,0 +1,19 @@
+@page "/"
+@inject NavigationManager NavigationManager
+
+
+<div class>
+    <div @onclick="NavigateToSportComponent">
+        SPORT 
+    </div>
+    <div>
+        BOULDER
+    </div>
+</div>
+
+@code {
+    private void NavigateToSportComponent()
+    {
+        NavigationManager.NavigateTo("sport");
+    }
+}
