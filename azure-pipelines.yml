@@ -54,9 +54,10 @@ steps:
 #     arguments: ''
 #     zipAfterPublish: false 
 
+
 - task: CmdLine@2
   inputs:
-    script: 'dotnet publish .\Server\ --configuration Release --output $(Build.ArtifactStagingDirectory) --self-contained true'
+    script: 'dotnet publish .\Server\ --configuration Release --output $(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
