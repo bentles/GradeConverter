@@ -45,8 +45,7 @@ steps:
     command: 'publish'
     publishWebProjects: true
     arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/Server'    
-    zipAfterPublish: true
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Server'
     
 - task: PublishBuildArtifacts@1
   inputs:
