@@ -51,7 +51,7 @@ steps:
     command: 'publish'
     publishWebProjects: true
     arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory) --self-contained true'
-    projects: 'GradeConverter.Server.csproj'
+    projects: '**/GradeConverter.Server.csproj'
     zipAfterPublish: false
     
 - task: PublishBuildArtifacts@1
