@@ -40,6 +40,7 @@ steps:
 #     platform: '$(buildPlatform)'
 #     configuration: '$(buildConfiguration)'
 
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
@@ -57,7 +58,16 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'dotnet publish .\Server\ --configuration Release --output $(Build.ArtifactStagingDirectory)'
+    script: 'dotnet publish .\Server\ --configuration Release --output $(Build.ArtifactStagingDirectory)/unzipped '
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/unzipped'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
 
 - task: PublishBuildArtifacts@1
   inputs:
