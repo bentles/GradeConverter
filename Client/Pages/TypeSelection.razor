@@ -2,14 +2,12 @@
 @inject NavigationManager NavigationManager
 
 
-<div class="layout">
-    <div @onclick="NavigateToSportComponent">
-        SPORT 
-    </div>
-    <div>
-        BOULDER
-    </div>
-</div>
+
+    <MudPaper @onclick="NavigateToSportComponent">SPORT</MudPaper>
+
+    <MudPaper @onclick="NavigateToSportComponent">BOULDER</MudPaper>
+
+
 
 @code {
     private void NavigateToSportComponent()

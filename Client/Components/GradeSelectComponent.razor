@@ -1,12 +1,12 @@
 @using GradeConverter.Shared
 @inject HttpClient Http
 
-<MudText Typo="Typo.h3">South African Sport Grades for @Grade:</MudText>
+<MudText Typo="Typo.h4" class="my-3">South African Sport Grades for @Grade:</MudText>
 
 @if(grades != null) {
     @foreach (var grade in grades)
     {
-        <MudCard Elevation=1>
+        <MudCard Elevation=1 class="mb-3">
              <MudCardHeader>
                 <CardHeaderContent>
                     <MudText><span>@grade.ToGrade</span></MudText>
@@ -19,7 +19,6 @@
         </MudCard>
     }
 }
-
 
 @code {
 
