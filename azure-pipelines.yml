@@ -52,14 +52,11 @@ steps:
 #     command: 'publish'
 #     publishWebProjects: true
 #     arguments: ''
-#     zipAfterPublish: false
-    
-- task: PowerShell@2
+#     zipAfterPublish: false 
+
+- task: CmdLine@2
   inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.
-      dotnet publish .\Server\ --configuration Release --output $(Build.ArtifactStagingDirectory) --self-contained true'
+    script: 'dotnet publish .\Server\ --configuration Release --output $(Build.ArtifactStagingDirectory) --self-contained true'
 
 - task: PublishBuildArtifacts@1
   inputs:
