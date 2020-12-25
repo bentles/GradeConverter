@@ -9,13 +9,10 @@
         <MudCard Elevation=1 class="mb-3">
              <MudCardHeader>
                 <CardHeaderContent>
-                    <MudText><span>@grade.ToGrade</span></MudText>
+                    <MudChip Color="Color.Primary">@grade.ToGrade</MudChip> <MudText Inline=true Typo="Typo.body2">a <span>@grade.FromGrade</span> in <span>@grade.FromGradeSystemName</span></MudText>
+                    @* <MudText><span>@grade.ToGrade</span></MudText> *@
                 </CardHeaderContent>
              </MudCardHeader>
-
-             <MudCardContent>
-                <MudText Typo="Typo.body2">is a <span>@grade.FromGrade</span> in <span>@grade.FromGradeSystemName</span></MudText>
-            </MudCardContent>
         </MudCard>
     }
 }
