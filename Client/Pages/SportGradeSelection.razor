@@ -1,9 +1,0 @@
-@page "/sport"
-
-<input type="text" name="grade" id="grade" @bind-value="Grade">
-Current value: @Grade
-<GradeConverter.Client.Components.GradeSelectComponent @bind-Grade="Grade"/>
-
-@code {
-    public string Grade { get; set; }
-}

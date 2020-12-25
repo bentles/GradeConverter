@@ -1,23 +1,22 @@
 @using GradeConverter.Shared
 @inject HttpClient Http
 
+<MudText Typo="Typo.h3">South African Sport Grades for @Grade:</MudText>
+
 @if(grades != null) {
     @foreach (var grade in grades)
     {
-        <div>
-            <div>
-                <span>@grade.FromGrade</span>:
-                <span>@grade.FromGradeSystemName</span>
-            </div>
-            ===>
-            <div>
-                <span>@grade.ToGrade</span>:
-                <span>@grade.ToGradeSystem</span>
-            </div>
-        </div>
+        <MudCard Elevation=1>
+             <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText><span>@grade.ToGrade</span></MudText>
+                </CardHeaderContent>
+             </MudCardHeader>
 
-        <br>
-        <br>
+             <MudCardContent>
+                <MudText Typo="Typo.body2">is a <span>@grade.FromGrade</span> in <span>@grade.FromGradeSystemName</span></MudText>
+            </MudCardContent>
+        </MudCard>
     }
 }
 

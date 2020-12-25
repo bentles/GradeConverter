@@ -1,0 +1,16 @@
+@page "/sport"
+
+@inject NavigationManager NavigationManager
+
+<MudTextField @bind-Value="Grade" Label="Select a grade" Variant="Variant.Outlined">
+</MudTextField>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" Link="@ResultLink()">Select</MudButton>
+
+
+@code {
+    public string Grade { get; set; }
+
+    private string ResultLink() {
+        return $"sportresults/{Grade}";
+    }
+}
