@@ -28,6 +28,13 @@
     [Parameter]
     public EventCallback<string> GradeChanged { get; set; }
 
+
+    [Parameter]
+    public bool Sport { get; set; } = true;
+
+    [Parameter]
+    public EventCallback<bool> SportChanged { get; set; }
+
     private GradeMatch[] grades;
     
     private void GetGrades() {       
@@ -35,6 +42,8 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        grades = await Http.GetFromJsonAsync<GradeMatch[]>($"GradeConversion/GetSouthAfricanRouteGrade?grade={Grade}");
+        grades = await Http.GetFromJsonAsync<GradeMatch[]>( 
+            Sport? $"GradeConversion/GetSouthAfricanRouteGrade?grade={Grade}" 
+            : $"GradeConversion/GetSouthAfricanBoulderGrade?grade={Grade}");
     }   
 }

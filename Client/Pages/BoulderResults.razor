@@ -1,0 +1,8 @@
+@page "/boulderresults/{grade}"
+
+<GradeSelectComponent @bind-Grade="Grade" Sport=false />
+
+@code {
+    [Parameter]
+    public string Grade { get; set; }
+}

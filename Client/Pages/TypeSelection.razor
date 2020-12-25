@@ -3,15 +3,22 @@
 
 
 
-    <MudPaper @onclick="NavigateToSportComponent">SPORT</MudPaper>
+<MudPaper class="py-3 my-3"  @onclick="NavigateToSportComponent">
+    <MudText Typo="Typo.h4" class="my-3 mx-auto">Sport</MudText>
+</MudPaper>
 
-    <MudPaper @onclick="NavigateToSportComponent">BOULDER</MudPaper>
-
-
+<MudPaper class="py-3"  @onclick="NavigateToBoulderComponent">
+    <MudText Typo="Typo.h4" class="my-3 mx-auto">Boulder</MudText>
+</MudPaper>
 
 @code {
     private void NavigateToSportComponent()
     {
         NavigationManager.NavigateTo("sport");
+    }
+
+    private void NavigateToBoulderComponent()
+    {
+        NavigationManager.NavigateTo("boulder");
     }
 }
