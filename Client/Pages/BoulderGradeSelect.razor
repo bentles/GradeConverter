@@ -2,7 +2,7 @@
 
 @inject NavigationManager NavigationManager
 
-<MudTextField class="my-3" @bind-Value="Grade" Label="Select a grade" Variant="Variant.Outlined">
+<MudTextField class="my-3" @bind-Value="Grade" Label="Select any boulder grade" Variant="Variant.Outlined">
 </MudTextField>
 <MudButton Variant="Variant.Filled" Color="Color.Primary" Link="@ResultLink()">Select</MudButton>
 
@@ -11,6 +11,6 @@
     public string Grade { get; set; }
 
     private string ResultLink() {
-        return $"boulderresults/{Grade}";
+        return $"boulderresults/{System.Net.WebUtility.UrlEncode(Grade)}";
     }
 }
