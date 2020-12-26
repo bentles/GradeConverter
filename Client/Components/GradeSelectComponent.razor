@@ -4,6 +4,10 @@
 
 
 @if(grades != null) {
+    @if(!grades.Any()) {
+        <p>No conversions found :(</p>
+    }
+
     @foreach (var grade in grades)
     {
         <MudCard Elevation=1 class="mb-3">
@@ -15,6 +19,9 @@
              </MudCardHeader>
         </MudCard>
     }
+}
+else {
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
 }
 
 @code {
