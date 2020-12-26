@@ -11,7 +11,7 @@
         <MudCard Elevation=1 class="mb-3">
              <MudCardHeader>
                 <CardHeaderContent>
-                    <MudChip Color="Color.Info">@grade.ToGrade</MudChip> 
+                    <MudChip Color="GetTypeColor(grade.Type)">@grade.ToGrade</MudChip> 
                     <MudText Inline=true Typo="Typo.body2">is a <span>@grade.FromGrade</span> in <span>@grade.FromGradeSystemName</span></MudText>
                 </CardHeaderContent>
              </MudCardHeader>
@@ -21,6 +21,8 @@
 else {
     <MudProgressCircular Color="Color.Default" Indeterminate="true" />
 }
+<br>
+
 
 @code {
 
@@ -30,22 +32,18 @@ else {
     [Parameter]
     public EventCallback<string> GradeChanged { get; set; }
 
-
-    [Parameter]
-    public bool Sport { get; set; } = true;
-
-    [Parameter]
-    public EventCallback<bool> SportChanged { get; set; }
-
     private GradeMatch[] grades;
     
     private void GetGrades() {       
     }
 
+    public MudBlazor.Color GetTypeColor(string type) {
+        return type == "Boulder" ? Color.Warning : Color.Info;
+
+    }
+
     protected override async Task OnParametersSetAsync()
     {
-        grades = await Http.GetFromJsonAsync<GradeMatch[]>( 
-            Sport? $"GradeConversion/GetSouthAfricanRouteGrade?grade={System.Net.WebUtility.UrlEncode(Grade)}" 
-            : $"GradeConversion/GetSouthAfricanBoulderGrade?grade={System.Net.WebUtility.UrlEncode(Grade)}");
+        grades = await Http.GetFromJsonAsync<GradeMatch[]>($"GradeConversion/GetSouthAfricanGrade?grade={System.Net.WebUtility.UrlEncode(Grade)}");
     }   
 }

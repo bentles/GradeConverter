@@ -6,5 +6,8 @@ namespace GradeConverter.Shared
         public string FromGrade { get; set; }
         public string ToGrade { get; set; } //the one converted to
         public string ToGradeSystem { get; set; }
+
+        public int Priority { get; set; }
+        public string Type { get; set; }
     }
 }
