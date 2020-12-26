@@ -26,5 +26,7 @@ namespace GradeConverter.Shared
                   
         }
 
+        public int priority { get; set; }
+
     }
 }

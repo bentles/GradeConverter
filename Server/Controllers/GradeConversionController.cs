@@ -32,12 +32,28 @@ namespace GradeConverter.Server.Controllers
             return ConvertGradeToSystem(grade, "Fontainebleau", Boulder);
         }
 
+        [HttpGet("[action]")]
+        public GradeMatch[] GetSouthAfricanGrade(string grade)
+        {
+            var boulderMatches = ConvertGradeToSystem(grade, "Fontainebleau", Boulder);
+            var routeMatches = ConvertGradeToSystem(grade, "South African", Sport);
+
+            return boulderMatches.Concat(routeMatches).OrderBy(a => a.Priority).ToArray();
+        }
+
         private GradeMatch[] ConvertGradeToSystem(string grade, string systemName, string systemType)
         {
             var matchingGrades = (from gradeSystem in MatchingGradeSystems(grade, systemType)
                                   from gradeName in gradeSystem.grade
                                   where string.Equals(gradeName.label, grade, System.StringComparison.InvariantCultureIgnoreCase)
-                                  select new { SystemName = gradeSystem.abbreviatedName, GradeName = gradeName.label, Value = gradeName.mid });
+                                  select new
+                                  {
+                                      SystemName = gradeSystem.abbreviatedName,
+                                      Priority = gradeSystem.priority,
+                                      GradeName = gradeName.label,
+                                      Value = gradeName.mid,
+                                      Type = gradeSystem.type
+                                  });
 
             var SAGrades = gradeSystems.First(g => g.abbreviatedName == systemName).grade;
 
@@ -48,7 +64,9 @@ namespace GradeConverter.Server.Controllers
                         FromGrade = gradeValues.GradeName,
                         FromGradeSystemName = gradeValues.SystemName,
                         ToGrade = SAGrade?.label ?? "Could not find conversion :(",
-                        ToGradeSystem = systemName
+                        ToGradeSystem = systemName,
+                        Priority = gradeValues.Priority,
+                        Type = gradeValues.Type
                     }).ToArray();
         }
 
