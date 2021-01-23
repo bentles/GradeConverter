@@ -1,4 +1,5 @@
 @using GradeConverter.Shared
+@using GradeConverter.Client.Repository
 @inject HttpClient Http
 
 @if(grades != null) {
@@ -44,6 +45,7 @@ else {
 
     protected override async Task OnParametersSetAsync()
     {
-        grades = await Http.GetFromJsonAsync<GradeMatch[]>($"GradeConversion/GetSouthAfricanGrade?grade={System.Net.WebUtility.UrlEncode(Grade)}");
+        //await Http.GetFromJsonAsync<GradeMatch[]>($"GradeConversion/GetSouthAfricanGrade?grade={System.Net.WebUtility.UrlEncode(Grade)}");
+        grades = GradeConversionRepository.GetSouthAfricanGrade(Grade);
     }   
 }
