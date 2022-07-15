@@ -47,5 +47,6 @@ else {
     {
         //await Http.GetFromJsonAsync<GradeMatch[]>($"GradeConversion/GetSouthAfricanGrade?grade={System.Net.WebUtility.UrlEncode(Grade)}");
         grades = GradeConversionRepository.GetSouthAfricanGrade(Grade);
+        await Task.CompletedTask;
     }   
 }

@@ -1,7 +1,7 @@
 @page "/"
 
 <MudTextField class="mt-4 mb-3" @bind-Value="Grade" IconSize="Size.Large"  Label="Type a grade to convert" Variant="Variant.Outlined"
-    Adornment="Adornment.End" AdornmentIcon="@Filled.Search" DebounceInterval="500">
+    Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" DebounceInterval="500">
 </MudTextField>
 
 <GradeSelectComponent @bind-Grade="Grade"></GradeSelectComponent>
